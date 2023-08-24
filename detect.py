@@ -59,14 +59,24 @@ def process(image):
 
 cap = cv2.VideoCapture('roadvidtimelapse.mp4')
 #cap = cv2.VideoCapture(0)
-process
+# process
+# ... (Rest of your code)
+
+# Process the image using the 'process' function
+import matplotlib.pyplot as plt
+import cv2
+
+# ... (Rest of your code)
+
+cap = cv2.VideoCapture('roadvidtimelapse.mp4')
+
 while cap.isOpened():
     ret, img = cap.read()
     ret, frame = cap.read()
     fgbg.apply(img)
     frame = (frame)
 
-    if (type(img) == type(None)):
+    if type(img) is None:
         break
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -75,21 +85,11 @@ while cap.isOpened():
     for (x, y, w, h) in cars:
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 255), 2)
 
-    #final = cv2.vconcat(['frame',frame, img])
+    processed_img = process(img)
 
-    #below line will show you lanes, and will help you detect the white lines on road
-    #cv2.imshow('frame', frame)
-
-    #below line will detect cars in video
-    cv2.imshow('video', img)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-
-
-
-
-
+    # Display the processed image with lines using matplotlib
+    plt.imshow(cv2.cvtColor(processed_img, cv2.COLOR_BGR2RGB))
+    plt.pause(0.01)  # Pause to update the display
 
 
 
